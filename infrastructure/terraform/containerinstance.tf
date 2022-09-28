@@ -11,6 +11,12 @@ resource "azurerm_container_group" "api" {
     username = var.registry_username
     password = var.registry_password
   }
+  exposed_port = [
+    {
+      port     = var.container_port
+      protocol = "TCP"
+    }
+  ]
   container {
     name   = var.container_name
     image  = "${var.registry_url}/${var.image_name}:${var.image_tag}"
