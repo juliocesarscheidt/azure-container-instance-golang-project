@@ -20,7 +20,7 @@ PLAN_FILE?=tfplan
 all: push-image init apply
 
 local-run:
-	docker container run --rm --name $(IMAGE_NAME) -d -p 80:80 "$(REGISTRY_URL)/$(IMAGE_NAME):$(IMAGE_TAG)"
+	docker container run --rm --name $(IMAGE_NAME) -d -p 9000:9000 "$(REGISTRY_URL)/$(IMAGE_NAME):$(IMAGE_TAG)"
 
 create-repo:
 	-@az acr create --resource-group $(RESOURCE_GROUP) --name $(REGISTRY_USERNAME) --sku Basic
